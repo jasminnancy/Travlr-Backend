@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_08_210018) do
+ActiveRecord::Schema.define(version: 2019_11_09_221826) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "carryons", force: :cascade do |t|
+    t.integer "luggage_id"
+    t.integer "trip_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "events", force: :cascade do |t|
     t.integer "trip_id"
@@ -67,16 +74,31 @@ ActiveRecord::Schema.define(version: 2019_11_08_210018) do
 
   create_table "luggages", force: :cascade do |t|
     t.integer "user_id"
-    t.string "type"
+    t.string "luggage_type"
     t.integer "size"
     t.integer "miles_travelled"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "places", force: :cascade do |t|
+    t.integer "trip_id"
+    t.string "name"
+    t.integer "cost"
+    t.string "address1"
+    t.string "address2"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.string "country"
+    t.text "notes"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "transportations", force: :cascade do |t|
     t.integer "trip_id"
-    t.string "type"
+    t.string "transport_type"
     t.integer "cost"
     t.string "company"
     t.string "starting_date"
@@ -93,8 +115,9 @@ ActiveRecord::Schema.define(version: 2019_11_08_210018) do
   end
 
   create_table "trips", force: :cascade do |t|
-    t.integer "luggage_id"
+    t.integer "user_id"
     t.string "title"
+    t.text "description"
     t.string "start_date"
     t.string "end_date"
     t.integer "budget"
@@ -108,7 +131,7 @@ ActiveRecord::Schema.define(version: 2019_11_08_210018) do
     t.string "email"
     t.string "first_name"
     t.string "last_name"
-    t.integer "phone_number"
+    t.string "phone_number"
     t.string "address1"
     t.string "address2"
     t.string "city"

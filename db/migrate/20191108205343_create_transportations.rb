@@ -2,7 +2,7 @@ class CreateTransportations < ActiveRecord::Migration[6.0]
   def change
     create_table :transportations do |t|
       t.integer :trip_id
-      t.string :type
+      t.string :transport_type
       t.integer :cost
       t.string :company
       t.string :starting_date

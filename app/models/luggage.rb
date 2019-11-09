@@ -1,4 +1,5 @@
 class Luggage < ApplicationRecord
     belongs_to :user
-    belongs_to :trip
+    has_many :carryons
+    has_many :trips, through: :carryons
 end

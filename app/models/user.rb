@@ -4,8 +4,9 @@ class User < ApplicationRecord
     has_many :friendships, dependent: :destroy
     has_many :friends, through: :friendships
 
+    has_many :trips
     has_many :luggages
-    has_many :trips, through: :luggages
+    has_many :carryons, through: :trips
 
     # removes friend
 
