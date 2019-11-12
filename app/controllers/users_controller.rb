@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def index
     users = User.all
-    render :json => users, :except => [:password_digest, :created_at, :updated_at],
+    render :json => users, :except => [:password_digest],
     :include => {
       :luggages => {
         :except => [:user_id, :created_at, :updated_at]
@@ -30,7 +30,15 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: @user, status: 200
+    render :json => @user, :except => [:password_digest],
+    :include => {
+      :luggages => {
+        :except => [:user_id, :created_at, :updated_at]
+      },
+      :trips => {
+        :except => [:user_id, :created_at, :updated_at]
+      }
+    }
   end
 
   private

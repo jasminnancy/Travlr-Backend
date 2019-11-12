@@ -27,7 +27,7 @@ class LuggagesController < ApplicationController
   
     private
     def luggage_params
-      params.permit(:size, :miles_travelled, :luggage_type, :created_at, :updated_at)
+      params.permit(:user_id, :name, :size, :miles_travelled, :luggage_type)
     end
   
     def set_luggage
