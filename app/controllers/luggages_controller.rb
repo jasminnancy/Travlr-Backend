@@ -3,7 +3,12 @@ class LuggagesController < ApplicationController
 
     def index
       luggages = Luggage.all
-      render json: luggages, status: 200
+      render json: luggages, :except => [:created_at, :updated_at],
+        :include => {
+          :carryons => {
+            :except => [:created_at, :updated_at]
+          }
+        }
     end
   
     def create
@@ -17,7 +22,7 @@ class LuggagesController < ApplicationController
     end
   
     def destroy
-      @user.destroy
+      @luggage.destroy
       render json: {message: "Luggage item was successfully deleted.", luggageId: @luggage.id}
     end
   
