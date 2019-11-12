@@ -38,7 +38,32 @@ class TripsController < ApplicationController
   
     def update
       @trip.update(trip_params)
-      render json: @trip, status: 200
+      render :json => @trip, :except => [:created_at, :updated_at],
+        :include => {
+          :carryons => {
+            :except => [:trip_id, :luggage_id, :created_at, :updated_at],
+            :include => {
+              :luggage => {
+                :except => [:user_id, :created_at, :updated_at]
+              }
+            }
+          },
+          :user => {
+            :except => [:password_digest, :created_at, :updated_at]
+          },
+          :places => {
+            :except => [:created_at, :updated_at]
+          },
+          :events => {
+            :except => [:created_at, :updated_at]
+          },
+          :hotels => {
+            :except => [:created_at, :updated_at]
+          },
+          :transportations => {
+            :except => [:created_at, :updated_at]
+          }
+        }
     end
   
     def destroy

@@ -6,7 +6,17 @@ class LuggagesController < ApplicationController
       render json: luggages, :except => [:created_at, :updated_at],
         :include => {
           :carryons => {
-            :except => [:created_at, :updated_at]
+            :except => [:created_at, :updated_at],
+            :include => {
+              :trip => {
+                :except => [:luggage_id, :created_at, :updated_at],
+                :include => {
+                  :transportations => {
+                    :except => [:trip_id, :created_at, :updated_at]
+                  }
+                }
+              }
+            }
           }
         }
     end
@@ -18,7 +28,22 @@ class LuggagesController < ApplicationController
   
     def update
       @luggage.update(luggage_params)
-      render json: @luggage, status: 200
+      render json: @luggage, :except => [:created_at, :updated_at],
+        :include => {
+          :carryons => {
+            :except => [:created_at, :updated_at],
+            :include => {
+              :trip => {
+                :except => [:luggage_id, :created_at, :updated_at],
+                :include => {
+                  :transportations => {
+                    :except => [:trip_id, :created_at, :updated_at]
+                  }
+                }
+              }
+            }
+          }
+        }
     end
   
     def destroy
@@ -27,7 +52,22 @@ class LuggagesController < ApplicationController
     end
   
     def show
-      render json: @luggage, status: 200
+      render json: @luggage, :except => [:created_at, :updated_at],
+        :include => {
+          :carryons => {
+            :except => [:created_at, :updated_at],
+            :include => {
+              :trip => {
+                :except => [:luggage_id, :created_at, :updated_at],
+                :include => {
+                  :transportations => {
+                    :except => [:trip_id, :created_at, :updated_at]
+                  }
+                }
+              }
+            }
+          }
+        }
     end
   
     private
