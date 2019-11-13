@@ -9,7 +9,7 @@ class LuggagesController < ApplicationController
             :except => [:created_at, :updated_at],
             :include => {
               :trip => {
-                :except => [:luggage_id, :created_at, :updated_at],
+                :except => [:created_at, :updated_at],
                 :include => {
                   :transportations => {
                     :except => [:trip_id, :created_at, :updated_at]

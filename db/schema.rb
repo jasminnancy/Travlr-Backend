@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_11_174025) do
+ActiveRecord::Schema.define(version: 2019_11_13_190138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,12 +33,12 @@ ActiveRecord::Schema.define(version: 2019_11_11_174025) do
     t.string "address1"
     t.string "address2"
     t.string "city"
-    t.string "state"
     t.string "zip"
     t.string "country"
     t.text "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "us_state"
   end
 
   create_table "hotels", force: :cascade do |t|
@@ -50,12 +50,12 @@ ActiveRecord::Schema.define(version: 2019_11_11_174025) do
     t.string "address1"
     t.string "address2"
     t.string "city"
-    t.string "state"
     t.string "zip"
     t.string "country"
     t.text "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "us_state"
   end
 
   create_table "luggages", force: :cascade do |t|
@@ -75,12 +75,12 @@ ActiveRecord::Schema.define(version: 2019_11_11_174025) do
     t.string "address1"
     t.string "address2"
     t.string "city"
-    t.string "state"
     t.string "zip"
     t.string "country"
     t.text "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "us_state"
   end
 
   create_table "transportations", force: :cascade do |t|
@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_174025) do
     t.text "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
   end
 
   create_table "trips", force: :cascade do |t|
@@ -111,6 +112,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_174025) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "photo"
+    t.integer "miles"
   end
 
   create_table "users", force: :cascade do |t|
@@ -123,13 +125,13 @@ ActiveRecord::Schema.define(version: 2019_11_11_174025) do
     t.string "address1"
     t.string "address2"
     t.string "city"
-    t.string "state"
     t.string "zip"
     t.string "country"
     t.text "bio"
     t.string "profile_pic"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "us_state"
   end
 
 end

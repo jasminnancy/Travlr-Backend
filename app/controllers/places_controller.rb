@@ -27,7 +27,7 @@ class PlacesController < ApplicationController
   
     private
     def place_params
-      params.permit(:name, :cost, :address1, :address2, :city, :state, :zip, :country, :notes)
+      params.permit(:trip_id, :name, :cost, :address1, :address2, :city, :us_state, :zip, :country, :notes)
     end
   
     def set_place

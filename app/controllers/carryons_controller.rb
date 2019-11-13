@@ -1,4 +1,4 @@
-class CarryonController < ApplicationController
+class CarryonsController < ApplicationController
     before_action :set_carryon, only: [:show, :update, :destroy]
 
     def index

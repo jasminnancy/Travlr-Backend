@@ -7,7 +7,7 @@ class TransportationsController < ApplicationController
     end
   
     def create
-        transportation = Transportation.create(luggage_params)
+      transportation = Transportation.create(transportation_params)
       render json: transportation, status: 201
     end
   
@@ -27,7 +27,7 @@ class TransportationsController < ApplicationController
   
     private
     def transportation_params
-      params.permit(:transport_type, :cost, :company, :starting_date, :starting_time, :ending_date, :ending_time, :starting_location, :destination, :total_miles, :confirmation_code, :notes)
+      params.permit(:trip_id, :name, :transport_type, :cost, :company, :starting_date, :starting_time, :ending_date, :ending_time, :starting_location, :destination, :total_miles, :confirmation_code, :notes)
     end
   
     def set_transportation

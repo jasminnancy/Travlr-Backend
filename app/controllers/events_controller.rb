@@ -27,7 +27,7 @@ class EventsController < ApplicationController
   
     private
     def event_params
-      params.permit(:name, :start_date, :start_time, :end_date, :end_time, :cost, :address1, :address2, :city, :state, :zip, :country, :notes)
+      params.permit(:trip_id, :name, :start_date, :start_time, :end_date, :end_time, :cost, :address1, :address2, :city, :us_state, :zip, :country, :notes)
     end
   
     def set_event
